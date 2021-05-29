@@ -1,0 +1,11 @@
+WHITESPACE = _{ " " | "\t" }
+COMMENT = _{ "//" ~ (!"\n" ~ ANY)* }
+
+string = @{ "\"" ~ (!"\"" ~ ANY)* ~ "\"" }
+digit = _{ '0'..'9' }
+numberSeparator = _{ "_" }
+int = @{ digit ~ (digit | numberSeparator)* }
+float = @{ int ~ "." ~ int }
+trueSym = { "true" }
+falseSym = { "false" }
+bool = { trueSym | falseSym }
